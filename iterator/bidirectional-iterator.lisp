@@ -1,5 +1,5 @@
 
-(defmixin bidirectional-mixin () ())
+(define-mixin-class bidirectional-iterator-mixin (iterator-mixin) ())
 
 (defgeneric iterator-prev (iterator)
   (:documentation "Reverses the given external iterator to the previous element of the collection"))

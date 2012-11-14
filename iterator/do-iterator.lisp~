@@ -1,0 +1,8 @@
+
+(defmacro do-iterator (collections &body body)
+  (let* ((vars (mapcar (lambda (coll) (first coll)) collections))
+	 (syms (mapcar (lambda (coll) (declare (ignore coll)) (gensym)) collections)))
+    `(do ,(mapcar (lambda (sym coll) (list sym (second coll)) syms collections))
+	 ((or ,@(mapcar (lambda (sym) `(iterator-empty-p ,sym)))))
+       (macrolet ,(mapcar (lambda (var sym) `(,var () (iterator-get ,sym))))
+	,@body))))

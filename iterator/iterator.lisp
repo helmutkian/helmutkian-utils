@@ -1,5 +1,5 @@
 
-(defmixin iterator-mixin () 
+(define-mixin-class iterator-mixin () 
   ((collection :initarg :collection :accessor iterator-collection)))
 
 (defgeneric make-iterator (collection)
