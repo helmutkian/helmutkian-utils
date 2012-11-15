@@ -62,9 +62,16 @@
    '(a b c d)
    (dlist-to-list (list-to-dlist '(a b c d)))))
 
-(define-test test-dlist-remove-if
-  (let* ((the-list '(1 2 3 4))
-	 (the-dlist (list-to-dlist the-list)))
-    (assert-equal
-     (remove-if #'evenp the-list)
-     (dlist-to-list (dlist-remove-if #'evenp the-dlist)))))
+(define-test test-dlist-remove-if    
+  (assert-equal
+   '(1 3)
+   (dlist-to-list (dlist-remove-if #'evenp 
+				   (list-to-dlist '(1 2 3 4)))))
+  (assert-equal
+   '(2 4)
+   (dlist-to-list (dlist-remove-if #'oddp
+				   (list-to-dlist '(1 2 3 4)))))
+  (assert-equal
+   '(1 1 1)
+   (dlist-to-list (dlist-remove-if #'zerop
+				   (list-to-dlist '(1 1 1 0))))))

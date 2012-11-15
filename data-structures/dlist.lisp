@@ -206,8 +206,15 @@ DLIST provided."
 
 (defun dlist-remove-if (test the-dlist)
   (do ((cell (dlist-front-cell the-dlist) (dcell-next cell)))
-      ((null cell))
+      ((null cell) the-dlist)
     (when (funcall test (dcell-elt cell))
+      (cond
+	((eql cell (dlist-front-cell the-dlist))
+	 (setf (dlist-front-cell the-dlist) 
+	       (dcell-next cell)))
+	((eql cell (dlist-back-cell the-dlist))
+	 (setf (dlist-back-cell the-dlist)
+	       (dcell-prev cell))))
       (dcell-remove cell))))
 
 (defun dlist-remove (obj the-dlist &key (test #'eql))
