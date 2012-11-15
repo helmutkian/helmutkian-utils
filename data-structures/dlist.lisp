@@ -44,13 +44,17 @@
        (return-from dcell-at-index cell))))
 
 (defun dcell-remove (target-cell)
-  (with-slots ((prev-cell dcell-prev) (next-cell dcell-next)) target-cell
-    (setf (dcell-next prev-cell) next-cell
-  	  (dcell-prev next-cell) prev-cell)))
+  (with-accessors 
+	((prev-cell dcell-prev) (next-cell dcell-next)) target-cell
+    (when prev-cell
+      (setf (dcell-next prev-cell) next-cell))
+    (when next-cell
+      (setf (dcell-prev next-cell) prev-cell))))
 
 ;;; **********************************************************************
 ;;; Non-Destructive DLIST Protocol
 ;;; **********************************************************************
+
 
 (defun make-dlist ()
   "Constructs a new empty DLIST"
@@ -74,6 +78,12 @@ the DLIST"
   (do ((cell (dlist-front-cell the-dlist) (dcell-next cell))
        (i 0 (1+ i)))
       ((null cell) i)))
+
+(defun list-to-dlist (the-list)
+  (let ((the-dlist (make-dlist)))
+    (dolist (elm the-list)
+      (dlist-insert-back elm the-dlist))
+    the-dlist))
 
 ;;; **********************************************************************
 ;;; **********************************************************************
@@ -198,7 +208,7 @@ DLIST provided."
   (do ((cell (dlist-front-cell the-dlist) (dcell-next cell)))
       ((null cell))
     (when (funcall test (dcell-elt cell))
-      (return-from dlist-remove-if (dcell-remove cell)))))
+      (dcell-remove cell))))
 
 (defun dlist-remove (obj the-dlist &key (test #'eql))
   (dlist-remove-if (lambda (elt) (funcall test obj elt))

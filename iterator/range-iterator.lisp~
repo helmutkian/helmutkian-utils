@@ -1,0 +1,5 @@
+
+(defclass integer-iterator (bidirectional-iterator-mixin)
+  ())
+
+(defmethod make-iterator ((start 0)))
