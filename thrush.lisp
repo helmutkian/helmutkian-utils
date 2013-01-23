@@ -1,7 +1,5 @@
 
-;(in-package :com.helmutkian.utils.thrush)
-
-
+(in-package :com.helmutkian.utils)
 
 (defmacro -> (value &body body)
   `(progn
@@ -16,4 +14,3 @@
 		(append outer (list inner)))
 	      body
 	      :initial-value value)))
-
