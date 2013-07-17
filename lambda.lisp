@@ -1,6 +1,9 @@
 
 (in-package #:com.helmutkian.utils.lambda)
 
+;;; ************************************************************
+;;; ************************************************************
+
 (defparameter *ignore-arg-sym* '_)
 
 (defun collect-ignore-args (args)
@@ -26,3 +29,26 @@
 	 ,@docstr
 	 ,@fn-body))))
     
+;;; ************************************************************
+;;; ************************************************************
+
+(defparameter *fn-implicit-arg-sym* '%)
+
+(defmacro fn (&body body)
+  `(lambda (,*fn-implicit-arg-sym*) ,@body))
+
+(defmacro fn* (&body body)
+  (let* ((num-args 
+	  (with-accumulator :max
+	    (dolist (sym (flatten body))
+	      (let ((sym* (utils.symbol:explode sym)))
+		(when (eql (car sym*)
+			   *fn-implicit-arg-sym*)
+		  (accumulate (cdr sym*)))))))
+	 (args (with-accumulator :list
+		 (dotimes (i num-args)
+		   (accumulate (symbolicate
+				*fn-implicit-arg-sym*
+				i))))))
+    `(lambda ,args ,@body)))
+ 

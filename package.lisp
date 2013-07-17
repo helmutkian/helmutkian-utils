@@ -15,9 +15,14 @@
 (defpackage #:com.helmutkian.utils.functional
   (:nicknames #:utils.functional)
   (:use #:common-lisp)
-  (:export #:curry
+  (:export ;; ******
+           ;; Deprecated
+           ;; *****
+           #:curry
 	   #:rcurry
 	   #:compose
+	   ;; *****
+	   ;; *****
 	   #:foldl
 	   #:foldr
 	   #:compose-call))
@@ -25,13 +30,22 @@
 (defpackage #:com.helmutkian.utils.symbol
   (:nicknames #:utils.symbol)
   (:use #:common-lisp)
-  (:export #:symb
-	   #:explod
+  (:import-from #:alexandria
+		#:symbolicate)
+  (:export #:symb ; Deprecated
+	   #:explode
 	   #:separate-symbols))
 
 (defpackage #:com.helmutkian.utils.lambda
   (:nicknames #:utils.lambda)
   (:use #:common-lisp)
-  (:export ;#:fn
+  (:import-from #:alexandria
+		#:flatten
+		#:symbolicate)
+  (:import-from #:utils.symbol
+		#:explode)
+  (:import-from #:cl-accumulators
+		#:with-accumulator)
+  (:export #:fn
 	   ;#:fn*
 	   #:iglambda))

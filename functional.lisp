@@ -1,6 +1,10 @@
 
 (in-package #:com.helmutkian.utils.functional)
 
+;;; ************************************************************
+;;; Deprecated for identitical functions in ALEXANDRIA package
+;;; ************************************************************
+
 (defun curry (fn &rest args)
   (lambda (&rest more-args)
     (apply fn (append args more-args))))
@@ -17,6 +21,9 @@
 	    functions
 	    :from-end t)))
 
+;;; ************************************************************
+;;; ************************************************************
+
 (defun foldl (function initval the-list)
   "Wrapper for (REDUCE <...> :INITIAL-VALUE <...> :FROM-END NIL) for
    the sake of a more familiar and terse syntax."
@@ -31,6 +38,9 @@
   "Wrapper for (REMOVE-IF-NOT <...>) the sake of
    a more familiar and terse syntax"
   (apply #'remove-if-not predicate sequence args))
+
+;;; ************************************************************
+;;; ************************************************************
 
 (defmacro compose-call (functions &rest args)
   "A macro which simplifies the calling of nested functions in terms of COMPOSE.
