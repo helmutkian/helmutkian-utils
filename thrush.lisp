@@ -1,5 +1,5 @@
 
-(in-package :com.helmutkian.utils)
+(in-package #:com.helmutkian.utils.thrush)
 
 (defmacro -> (value &body body)
   `(progn
