@@ -2,19 +2,6 @@
 (in-package #:com.helmutkian.utils.symbol)
 
 ;;; ************************************************************
-;;; SYMB
-;;;
-;;; Deprecated in favor of ALEXANDRIA:SYMBOLICATE 
-;;; ************************************************************
-
-(defun mkstr (&rest args)
-  (with-output-to-string (s)
-    (dolist (a args) (princ a s))))
-
-(defun symb (&rest args)
-  (values (intern (apply #'mkstr args))))
-
-;;; ************************************************************
 ;;; EXPLODE
 ;;; ************************************************************
 
@@ -27,7 +14,8 @@
 ;;; SEPARATE-SYMBOLS
 ;;; ************************************************************
 
-(defun separate-symbols (syms &key (seperator '-))
-  (apply #'symbolicate
-	 (append (mappend (lambda (s) (list s seperator)) (butlast syms))
-		 (last syms))))
+(defun split-symbol (sym &key (delimiter '-))
+  (mapcar #'symbolicate
+	  (split-sequence (char (write-to-string delimiter) 0)
+			  (write-to-string sym))))
+	 

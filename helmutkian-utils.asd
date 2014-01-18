@@ -1,7 +1,6 @@
 
 (asdf:defsystem #:helmutkian-utils
-  :depends-on ((:system "alexandria")
-	       (:system "cl-accumulators"))
+  :depends-on ("alexandria" "split-sequence")
   :components ((:file "packages"
 		      :depends-on ("alexandria"))
 	       (:file "setf-utils"

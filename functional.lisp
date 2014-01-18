@@ -1,25 +1,6 @@
 
 (in-package #:com.helmutkian.utils.functional)
 
-;;; ************************************************************
-;;; Deprecated for identitical functions in ALEXANDRIA package
-;;; ************************************************************
-
-(defun curry (fn &rest args)
-  (lambda (&rest more-args)
-    (apply fn (append args more-args))))
-
-(defun rcurry (fn &rest args)
-  (lambda (&rest more-args)
-    (apply fn (append more-args args))))
-
-(defun compose (&rest functions)
-  (flet ((compose2 (f g)
-	   (lambda (&rest args)
-	     (funcall f (apply g args)))))
-    (reduce #'compose2
-	    functions
-	    :from-end t)))
 
 ;;; ************************************************************
 ;;; ************************************************************

@@ -7,42 +7,34 @@
 	   #:setf-all))
 
 (defpackage #:com.helmutkian.utils.thrush
-  (:nicknames #:utils.thrush)
+  (:nicknames #:hk.utils.thrush)
   (:use #:common-lisp)
   (:export #:->
 	   #:->>))
 
 (defpackage #:com.helmutkian.utils.functional
-  (:nicknames #:utils.functional)
+  (:nicknames #:hk.utils.functional)
   (:use #:common-lisp)
-  (:export ;; ******
-           ;; Deprecated
-           ;; *****
-           #:curry
-	   #:rcurry
-	   #:compose
-	   ;; *****
-	   ;; *****
-	   #:foldl
+  (:export #:foldl
 	   #:foldr
+	   #:filter
 	   #:compose-call))
 
 (defpackage #:com.helmutkian.utils.symbol
-  (:nicknames #:utils.symbol)
-  (:use #:common-lisp)
+  (:nicknames #:hk.utils.symbol)
+  (:use #:common-lisp #:split-sequence)
   (:import-from #:alexandria
 		#:symbolicate)
-  (:export #:symb ; Deprecated
-	   #:explode
-	   #:separate-symbols))
+  (:export #:explode
+	   #:split-symbol))
 
 (defpackage #:com.helmutkian.utils.lambda
-  (:nicknames #:utils.lambda)
+  (:nicknames #:hk.utils.lambda)
   (:use #:common-lisp)
   (:import-from #:alexandria
 		#:flatten
 		#:symbolicate)
-  (:import-from #:utils.symbol
+  (:import-from #:hk.utils.symbol
 		#:explode)
   (:import-from #:cl-accumulators
 		#:with-accumulator)

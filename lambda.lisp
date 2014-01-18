@@ -37,6 +37,7 @@
 (defmacro fn (&body body)
   `(lambda (,*fn-implicit-arg-sym*) ,@body))
 
+#|
 (defmacro fn* (&body body)
   (let* ((num-args 
 	  (with-accumulator :max
@@ -51,4 +52,4 @@
 				*fn-implicit-arg-sym*
 				i))))))
     `(lambda ,args ,@body)))
- 
+ |#
