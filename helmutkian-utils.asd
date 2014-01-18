@@ -1,8 +1,7 @@
 
 (asdf:defsystem #:helmutkian-utils
-  :depends-on ("alexandria" "split-sequence")
-  :components ((:file "packages"
-		      :depends-on ("alexandria"))
+  :depends-on ("alexandria" "split-sequence" "parse-declarations-1.0")
+  :components ((:file "package")
 	       (:file "setf-utils"
 		      :depends-on ("package"))
 	       (:file "thrush"
@@ -13,6 +12,7 @@
 		      :depends-on ("package"))
 	       (:file "lambda"
 		      :depends-on ("package"
-				   "symbol"
-				   "cl-accumulators"))))
+				   "symbol"))
+	       (:file "predicate"
+		      :depends-on ("package"))))
 

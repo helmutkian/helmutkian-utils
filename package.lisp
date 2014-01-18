@@ -13,7 +13,8 @@
 	   #:->>))
 
 (defpackage #:com.helmutkian.utils.functional
-  (:nicknames #:hk.utils.functional)
+  (:nicknames #:hk.utils.functional
+	      #:hk.utils.fn)
   (:use #:common-lisp)
   (:export #:foldl
 	   #:foldr
@@ -36,8 +37,15 @@
 		#:symbolicate)
   (:import-from #:hk.utils.symbol
 		#:explode)
-  (:import-from #:cl-accumulators
-		#:with-accumulator)
   (:export #:fn
 	   ;#:fn*
 	   #:iglambda))
+
+(defpackage #:com.helmutkian.utils.predicate
+  (:nicknames #:hk.utils.predicate
+	      #:hk.utis.pred
+	      #:hk.utils.?)
+  (:use #:common-lisp)
+  (:export #:or-fn
+	   #:and-fn
+	   #:space-char-p))
