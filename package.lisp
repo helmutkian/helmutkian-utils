@@ -43,7 +43,7 @@
 
 (defpackage #:com.helmutkian.utils.predicate
   (:nicknames #:hk.utils.predicate
-	      #:hk.utis.pred
+	      #:hk.utils.pred
 	      #:hk.utils.?)
   (:use #:common-lisp)
   (:export #:or-fn
