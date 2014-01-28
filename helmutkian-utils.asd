@@ -7,12 +7,9 @@
 	       (:file "thrush"
 		      :depends-on ("package"))
 	       (:file "functional"
-		      :depends-on ("package"))
+		      :depends-on ("package" "symbol"))
 	       (:file "symbol"
 		      :depends-on ("package"))
-	       (:file "lambda"
-		      :depends-on ("package"
-				   "symbol"))
 	       (:file "predicate"
 		      :depends-on ("package"))))
 

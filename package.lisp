@@ -1,6 +1,6 @@
 
 (defpackage #:com.helmutkian.utils.setf
-  (:nicknames #:utils.setf)
+  (:nicknames #:hk.utils.setf)
   (:use #:common-lisp)
   (:export #:setf-call
 	   #:setf-call*
@@ -12,15 +12,6 @@
   (:export #:->
 	   #:->>))
 
-(defpackage #:com.helmutkian.utils.functional
-  (:nicknames #:hk.utils.functional
-	      #:hk.utils.fn)
-  (:use #:common-lisp)
-  (:export #:foldl
-	   #:foldr
-	   #:filter
-	   #:compose-call))
-
 (defpackage #:com.helmutkian.utils.symbol
   (:nicknames #:hk.utils.symbol)
   (:use #:common-lisp #:split-sequence)
@@ -29,17 +20,19 @@
   (:export #:explode
 	   #:split-symbol))
 
-(defpackage #:com.helmutkian.utils.lambda
-  (:nicknames #:hk.utils.lambda)
-  (:use #:common-lisp)
-  (:import-from #:alexandria
-		#:flatten
-		#:symbolicate)
-  (:import-from #:hk.utils.symbol
-		#:explode)
-  (:export #:fn
-	   ;#:fn*
+(defpackage #:com.helmutkian.utils.functional
+  (:nicknames #:hk.utils.functional
+	      #:hk.utils.fn)
+  (:use #:common-lisp
+	#:alexandria
+	#:hk.utils.symbol)
+  (:export #:foldl
+	   #:foldr
+	   #:filter
+	   #:compose-call
+	   #:fn
 	   #:iglambda))
+
 
 (defpackage #:com.helmutkian.utils.predicate
   (:nicknames #:hk.utils.predicate
@@ -48,4 +41,5 @@
   (:use #:common-lisp)
   (:export #:or-fn
 	   #:and-fn
-	   #:space-char-p))
+	   #:space-char-p
+	   #:in-range-p))
