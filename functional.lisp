@@ -1,6 +1,26 @@
 
 (in-package #:com.helmutkian.utils.functional)
 
+;;; ************************************************************
+;;; ************************************************************
+
+(defun rmapcar (fn &rest args)
+  "recursively maps with MAPCAR all objs in list and its sublists"
+  (if (some #'atom args)
+      (apply fn args)
+      (apply #'mapcar
+	     (lambda (&rest args)
+		 (apply #'rmapcar fn args))
+	     args)))
+
+(defun rmapc (fn &rest args)
+  "recursively maps with MAPC all objs in list and its sublists"
+  (if (some #'atom args)
+      (apply fn args)
+      (apply #'mapc
+	     (lambda (&rest args)
+		 (apply #'rmapc fn args))
+	     args)))
 
 ;;; ************************************************************
 ;;; ************************************************************

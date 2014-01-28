@@ -26,7 +26,9 @@
   (:use #:common-lisp
 	#:alexandria
 	#:hk.utils.symbol)
-  (:export #:foldl
+  (:export #:rmapcar
+	   #:rmapc
+	   #:foldl
 	   #:foldr
 	   #:filter
 	   #:compose-call
