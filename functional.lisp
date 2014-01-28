@@ -97,3 +97,7 @@ Function version of COMPOSE-CALL macro.
 
 (defmacro fn (&body body)
   `(lambda (,*fn-implicit-arg-sym*) ,@body))
+
+(defmacro fn-call (fn-form arg)
+  "Applies given FN form immediately on given ARG"
+  `(funcall (fn ,fn-form) ,arg))
