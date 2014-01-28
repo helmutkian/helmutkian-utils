@@ -31,6 +31,7 @@
 	   #:filter
 	   #:compose-call
 	   #:fn
+	   #:%
 	   #:fn-call
 	   #:iglambda))
 
