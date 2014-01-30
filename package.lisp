@@ -37,7 +37,6 @@
 	   #:fn-call
 	   #:iglambda))
 
-
 (defpackage #:com.helmutkian.utils.predicate
   (:nicknames #:hk.utils.predicate
 	      #:hk.utils.pred
@@ -47,3 +46,9 @@
 	   #:and-fn
 	   #:space-char-p
 	   #:in-range-p))
+
+(defpackage #:com.helmutkian.utils.defclass-star
+  (:nicknames #:hk.utils.defclass-star)
+  (:use #:common-lisp #:alexandria)
+  (:export #:deflcass*
+	   #:*accessor-prefix*))

@@ -11,5 +11,7 @@
 	       (:file "symbol"
 		      :depends-on ("package"))
 	       (:file "predicate"
+		      :depends-on ("package"))
+	       (:file "defclass-star"
 		      :depends-on ("package"))))
 
