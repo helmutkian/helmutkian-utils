@@ -50,6 +50,8 @@
 (defpackage #:com.helmutkian.utils.oop
   (:nicknames #:hk.utils.oop)
   (:use #:common-lisp #:alexandria)
+  (:import-from #:tcr.parse-declarations-1.0
+		#:parse-body)
   (:export #:deflcass*
 	   #:*accessor-prefix*
 	   #:singleton
