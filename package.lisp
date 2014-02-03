@@ -47,8 +47,14 @@
 	   #:space-char-p
 	   #:in-range-p))
 
-(defpackage #:com.helmutkian.utils.defclass-star
-  (:nicknames #:hk.utils.defclass-star)
+(defpackage #:com.helmutkian.utils.oop
+  (:nicknames #:hk.utils.oop)
   (:use #:common-lisp #:alexandria)
   (:export #:deflcass*
-	   #:*accessor-prefix*))
+	   #:*accessor-prefix*
+	   #:singleton
+	   #:defsingleton
+	   #:mixin
+	   #:defmixin
+	   #:final
+	   #:definal))

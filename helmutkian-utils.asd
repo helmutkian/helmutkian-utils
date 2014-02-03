@@ -12,6 +12,6 @@
 		      :depends-on ("package"))
 	       (:file "predicate"
 		      :depends-on ("package"))
-	       (:file "defclass-star"
+	       (:file "oop"
 		      :depends-on ("package"))))
 
